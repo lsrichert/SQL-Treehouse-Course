@@ -34,6 +34,24 @@ SELECT * FROM products WHERE price IN (7.99, 9.99, 11.99);
 last_name. Without using the OR keyword, find all the users with the username of "2spooky4me" or "beard_man".*/
 SELECT * FROM users WHERE username IN ("2spooky4me", "beard_man");
 
+--SEARCHING WITHIN A RANGE OF VALUES
+/* What are the books in the library from the 19th century?*/
+SELECT title, author FROM books WHERE first_published >= 1800 AND first_published <= 1899;
+ --The above could be accomplished more easily by using the BETWEEN keyword.
+ SELECT title, author FROM books WHERE first_published BETWEEN 1800 AND 1899;
+
+ /*In the e-commerce database we have the products table with the columns id, name, description and price.
+Find all the products in the database with the price including and between 10.99 and 12.99.*/
+SELECT * FROM products WHERE price BETWEEN 10.99 AND 12.99;
+
+/*We're back in our sports team database with the results table. The columns are id, home_team, home_score, 
+away_team, away_score and played_on.
+There are 30 days in September. Find all the games played in the results table in September 2015.*/
+SELECT * FROM results WHERE played_on BETWEEN "2015-09-01" AND "2015-09-30";
+
+
+
+
 
 
 
