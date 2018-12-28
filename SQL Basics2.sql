@@ -79,6 +79,10 @@ typing a last name and suggestions will appear. Write a query to retrieve all va
 the last name value is present. Only retrieve the last_name column.*/
 SELECT last_name FROM phone_book WHERE last_name IS NOT NULL;
 
+--Teaser for lessons involving related data
+SELECT * FROM books, loans
+WHERE loans.book_id = books.id;
+
 
 
 
