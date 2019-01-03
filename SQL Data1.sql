@@ -12,7 +12,7 @@ INSERT INTO users VALUES (NULL, "rooney", "3456", "Rooney", "Richert");
 
 /*Now we're using a database from a smartphone. It has a phone_book table. It has the columns id, first_name, last_name and phone.
 Add a new contact to the phone_book table. Use any valid values you want. All columns are required. The id column is auto incrementing.*/
-
+INSERT INTO phone_book VALUES (NULL, "Ellie", "Richert", 9991234567);
 
 
 
