@@ -13,5 +13,17 @@ DELETE FROM users WHERE username IS "poley_hands";
 Delete all contacts with the first name of Jonathan and last name of Luna.*/
 DELETE FROM phone_book WHERE first_name = "Jonathan" AND last_name = "Luna";
 
+--Practice Session
 
+-- We've removed the reviews section from our website. Please remove all reviews.
+DELETE FROM reviews;
+
+-- Remove movies from the year 1984.
+DELETE FROM movies WHERE year_released IS 1984;
+
+-- Remove actors with the first name "Yuri", "Walter" and "Victor".
+DELETE FROM actors WHERE name LIKE "Yuri%" OR "Walter%" OR "Victor%";
+
+-- Remove all Sci Fi movies.
+DELETE FROM movies WHERE genre IS "Sci Fi";
 
