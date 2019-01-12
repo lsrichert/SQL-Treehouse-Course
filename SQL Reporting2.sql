@@ -6,8 +6,9 @@ SELECT * FROM orders LIMIT 50 OFFSET 100;
 --the above query will give us 50 results but start at line 101 with the query
 
 --the same query can be done by elminating the keyword 'OFFSET' as a shortcut but being
---more explicit is usually better when writing SQL statements
-SELECT * FROM orders LIMIT 50, 100;
+--more explicit is usually better when writing SQL statements; if you eliminate the keyword OFFSET,
+--you MUST also flip the numbers, so the below would return a limit of 50 results and skip 100 lines
+SELECT * FROM orders LIMIT 100, 50;
 
 --Challenge 1 (2 questions)
 /*In a library database there's a books table. There's a title, author, genre and first_published column.
