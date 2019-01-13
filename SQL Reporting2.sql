@@ -1,37 +1,47 @@
---Paging Through Results
+--Next session in Reporting
+--FUNCTIONS
 
----- SELECT * FROM <table> LIMIT <# of rows> OFFSET <skipped rows>;
-SELECT * FROM orders LIMIT 50 OFFSET 100;
+--Adding Text Columns Together
+--Sometimes the operator varies depending on which SQL you're using.
 
---the above query will give us 50 results but start at line 101 with the query
+--- Concatenation Operator: ||
 
---the same query can be done by elminating the keyword 'OFFSET' as a shortcut but being
---more explicit is usually better when writing SQL statements; if you eliminate the keyword OFFSET,
---you MUST also flip the numbers, so the below would return a limit of 50 results and skip 100 lines
-SELECT * FROM orders LIMIT 100, 50;
+SELECT  first_name || " " || last_name AS "Full  Name", 
+        email AS "Email", phone AS "Phone" 
+          FROM customers ORDER BY last_name;
+
+--As shown above, you can still use the ORDER BY keyword to sort by table names even if you've
+--concatenated two columns.
+
+/* Instruction
+Single vs Double Quotes
+In SQL there's a difference between using single quotes (') and double quotes ("). Single quotes 
+should be used for String literals (e.g. 'lbs'), and double quotes should be used for identifiers 
+like column aliases (e.g. "Max Weight"): */
+
+SELECT maximum_weight || 'lbs' AS "Max Weight" FROM ELEVATOR_DATA;
+
+/* Also, in this course, there's a few instances where we get this wrong and use double quotes with a 
+String literal. Some versions of SQL will let you get away with that. So while you may be able to 
+use them interchangeably here, just know that's not always the case. */
 
 --Challenge 1 (2 questions)
-/*In a library database there's a books table. There's a title, author, genre and first_published column.
-The library database is connected to a website displaying 10 books at a time, sorted by the title alphabetically.
-Write a query to bring back the second page of results. Please retrieve all columns of information.*/
-SELECT * FROM books ORDER BY title LIMIT 10 OFFSET 10;
+/* In the library database there's a patrons table listing all the users of the library. The columns 
+are id, first_name, last_name, address, email, library_id and zip_code.
+Generate a list of strings that are in the following format: Andrew Chalkley <andrew@teamtreehouse.com>. 
+Concatenate the first name, last name and email address for all users.
+Alias it to to_field. This will be used in the "To" field in email marketing. */
+SELECT first_name || " " || last_name || " " || "<" || email || ">" AS "to_field" FROM patrons;
 
-/*Imagine you're developing a Contacts application on a phone. You have a database with a phone_book table. It has the 
-columns, first_name, last_name and phone. The phone has a technical limitation to show 20 contacts on a screen at a time. 
-Write the SQL query to retrieve the 3rd page of results from the phone_book table. Contacts are ordered by last name and then first name.*/
-SELECT * FROM phone_book ORDER BY last_name, first_name LIMIT 20 OFFSET 40;
+/* In an ecommerce database there's a addresses table. There is an id, nickname, street, city, state, zip, 
+country and user_id columns.
+Concatenate the street, city, state, zip and country in the following format. Street, City, State Zip.
+Country e.g. 34 NE 12 st, Portland, OR 97129. USA
+Alias the concatenated string as address */
+SELECT street || "," || " " || city || "," || " "|| state || " " || zip || "." || " " || country AS "address" FROM addresses;
 
---Practice
--- Order movies with the most recent movies appearing at the top
-SELECT * FROM movies ORDER BY year_released DESC;
 
--- Sort all reviews by username
-SELECT * FROM reviews ORDER BY username;
 
--- Find top 3 highest rating reviews
-SELECT * FROM reviews ORDER BY rating DESC LIMIT 3;
 
--- Obtain the actor records between the 701st and 720th records using only LIMIT and OFFSET
--- Due to actors being removed from the database the 701st row has the id of 702
-SELECT * FROM actors LIMIT 19 OFFSET 700;
+
 
