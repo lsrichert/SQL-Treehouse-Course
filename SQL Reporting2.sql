@@ -40,6 +40,15 @@ Country e.g. 34 NE 12 st, Portland, OR 97129. USA
 Alias the concatenated string as address */
 SELECT street || "," || " " || city || "," || " "|| state || " " || zip || "." || " " || country AS "address" FROM addresses;
 
+--Finding Length with LENGTH()
+SELECT username, LENGTH(username) AS length FROM customers ORDER BY length DESC LIMIT 1;
+SELECT username AS length FROM customers WHERE LENGTH(username) IS < 7;
+
+--Challenge 2 (1 question)
+/* In the library database there's a books table with the columns id, title, author, genre and first_published.
+Find the book with the longest title. Show the title and then the length. Alias the result of the length 
+calculation to be longest_length. Only retrieve the longest book. */
+SELECT title, LENGTH(title) AS longest_length FROM books ORDER BY longest_length DESC LIMIT 1;
 
 
 
